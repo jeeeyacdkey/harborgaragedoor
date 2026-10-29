@@ -1,0 +1,348 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Harbor Door Referral</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: sectional-door hero (page opens like a garage door), then a plain ticket-style flow: services, steps, safety, areas, FAQ, request form. */
+:root {
+  --bg: #f2f3f1;
+  --surface: #ffffff;
+  --ink: #14202b;
+  --muted: #55646f;
+  --line: #d3d8d6;
+  --brick: #a4352b;
+  --brick-ink: #ffffff;
+  --signal: #e8b923;
+  --signal-ink: #14202b;
+  --door: #dfe3e2;
+  --door-edge: #b9c0be;
+  --font-display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f161c; --surface: #17212a; --ink: #e9edef; --muted: #9aa8b2; --line: #2b3944;
+    --brick: #e0675a; --brick-ink: #14202b; --signal: #e8b923; --signal-ink: #14202b;
+    --door: #243340; --door-edge: #36495a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f161c; --surface: #17212a; --ink: #e9edef; --muted: #9aa8b2; --line: #2b3944;
+  --brick: #e0675a; --brick-ink: #14202b; --signal: #e8b923; --signal-ink: #14202b;
+  --door: #243340; --door-edge: #36495a; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 32px;
+}
+.wrap { max-width: 1040px; margin: 0 auto; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.02; margin: 0; letter-spacing: 0.005em; }
+h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); font-weight: 700; text-transform: uppercase; }
+h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 700; text-transform: uppercase; }
+h3 { font-size: 1.45rem; font-weight: 600; }
+p { margin: 0; }
+.label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--signal); outline-offset: 2px; }
+
+/* header */
+.top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 18px; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.brand span { color: var(--brick); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font-body); font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer;
+  padding: 12px 20px; border: 2px solid var(--ink); background: transparent; color: var(--ink); border-radius: 4px;
+}
+.btn.primary { background: var(--brick); border-color: var(--brick); color: var(--brick-ink); }
+.btn:hover { filter: brightness(1.08); }
+
+/* disclosure strip */
+.disclose { background: var(--signal); color: var(--signal-ink); font-weight: 600; font-size: 0.97rem; padding: 10px 14px; border-radius: 4px; }
+
+/* hero */
+.hero { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: center; padding-block: 40px 56px; }
+.hero > * { min-width: 0; }
+.hero .lede { font-size: 1.2rem; max-width: 34em; margin-top: 18px; color: var(--muted); }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.door { border: 6px solid var(--door-edge); border-radius: 3px; background: var(--door-edge); display: grid; gap: 4px; }
+.panel { background: var(--door); display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px; height: 70px; }
+.panel i { border: 2px solid var(--door-edge); border-radius: 2px; background: linear-gradient(var(--bg), transparent 60%); opacity: 0.9; }
+.panel.glass i { background: var(--ink); opacity: 0.8; border-color: var(--door-edge); }
+.door-cap { margin-top: 10px; text-align: center; }
+
+/* sections */
+section { padding-block: 48px; border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 10px; margin-bottom: 28px; max-width: 40em; }
+.sec-head p { color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.grid > * { min-width: 0; }
+.item { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 18px; display: grid; gap: 8px; align-content: start; }
+.item p { color: var(--muted); font-size: 0.97rem; }
+.item.urgent { border-color: var(--brick); }
+.tag { justify-self: start; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--brick); color: var(--brick-ink); padding: 2px 8px; border-radius: 2px; }
+
+.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; gap: 14px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 54px 1fr; gap: 14px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 16px; }
+.steps li::before { content: counter(s); font-family: var(--font-display); font-weight: 700; font-size: 2.4rem; line-height: 1; color: var(--brick); }
+.steps p { color: var(--muted); }
+.steps strong { display: block; font-size: 1.1rem; }
+
+.warn { background: var(--surface); border: 2px solid var(--brick); border-radius: 4px; padding: 22px; display: grid; gap: 10px; }
+.warn ul { margin: 0; padding-left: 1.2em; color: var(--muted); }
+
+.areas { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.areas li { border: 1px solid var(--line); background: var(--surface); padding: 6px 12px; border-radius: 999px; font-size: 0.95rem; }
+.areas.near li { background: transparent; color: var(--muted); }
+.areas-block { display: grid; gap: 14px; }
+
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0 18px; }
+details + details { margin-top: 10px; }
+summary { cursor: pointer; font-weight: 600; padding: 16px 0; list-style-position: outside; }
+details p { color: var(--muted); padding-bottom: 16px; max-width: 46em; }
+
+/* form */
+.form-card { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 24px; display: grid; gap: 16px; }
+.row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.row > * { min-width: 0; }
+.field { display: grid; gap: 6px; }
+.field label { font-weight: 600; font-size: 0.95rem; }
+input, select, textarea {
+  font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line);
+  border-radius: 4px; padding: 11px 12px; width: 100%;
+}
+textarea { min-height: 96px; resize: vertical; }
+.check { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; color: var(--muted); }
+.check input { width: auto; margin-top: 5px; }
+.err { color: var(--brick); font-size: 0.9rem; min-height: 1.2em; }
+.result { border: 2px solid var(--ink); border-radius: 4px; padding: 20px; display: grid; gap: 12px; }
+.result pre { margin: 0; font-family: var(--font-mono); font-size: 0.85rem; white-space: pre-wrap; overflow-wrap: anywhere; background: var(--bg); padding: 12px; border-radius: 4px; }
+.phone { font-family: var(--font-mono); font-weight: 500; }
+
+footer { padding-block: 32px 8px; border-top: 1px solid var(--line); display: grid; gap: 10px; color: var(--muted); font-size: 0.9rem; }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; gap: 28px; padding-block: 28px 40px; }
+  .row { grid-template-columns: 1fr; }
+  .panel { height: 56px; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">Harbor <span>Door</span> Referral</div>
+    <a class="btn primary" href="tel:+16175550100">Call <span class="phone">(617) 555-0100</span></a>
+  </header>
+
+  <p class="disclose">We are a referral service. We do not repair garage doors. We pass your request to an independent local contractor, and that contractor does the work.</p>
+
+  <div class="hero">
+    <div>
+      <p class="label">Garage door repair in Boston, MA</p>
+      <h1 style="margin-top:12px">Broken garage door? Get matched with a local contractor.</h1>
+      <p class="lede">Tell us what is wrong and where you are. We send your request to a Boston-area garage door contractor who contacts you directly with a quote and a time.</p>
+      <div class="cta">
+        <a class="btn primary" href="#request">Request a contractor</a>
+        <a class="btn" href="#how">How it works</a>
+      </div>
+    </div>
+    <div>
+      <div class="door" role="img" aria-label="Illustration of a sectional garage door with four panels">
+        <div class="panel glass"><i></i><i></i><i></i></div>
+        <div class="panel"><i></i><i></i><i></i></div>
+        <div class="panel"><i></i><i></i><i></i></div>
+        <div class="panel"><i></i><i></i><i></i></div>
+      </div>
+      <p class="label door-cap">Sectional door, the common type on Boston garages</p>
+    </div>
+  </div>
+
+  <section id="problems">
+    <div class="sec-head">
+      <p class="label">What we refer</p>
+      <h2>Garage door problems our contractors handle</h2>
+      <p>If your problem is not listed, describe it in the request form and we will pass it along.</p>
+    </div>
+    <div class="grid">
+      <div class="item urgent"><span class="tag">Often urgent</span><h3>Broken spring</h3><p>A loud bang, then the door will not lift or feels very heavy. Do not try to open it.</p></div>
+      <div class="item urgent"><span class="tag">Often urgent</span><h3>Snapped or frayed cable</h3><p>One side hangs low or the door sits crooked in the opening.</p></div>
+      <div class="item"><h3>Door off track</h3><p>Rollers have jumped the rail, or the door jams halfway.</p></div>
+      <div class="item"><h3>Opener not working</h3><p>Remote dead, motor humming, or the opener runs but the door stays put.</p></div>
+      <div class="item"><h3>Sensors and auto-reverse</h3><p>Door will not close, or reverses on its own. Often a misaligned safety sensor.</p></div>
+      <div class="item"><h3>Noisy or shaking door</h3><p>Grinding, scraping or squealing from worn rollers, hinges or springs.</p></div>
+      <div class="item"><h3>Damaged panels</h3><p>Dents, cracks or a panel hit by a car or a snow plow.</p></div>
+      <div class="item"><h3>New door or opener</h3><p>Replacement of an old door or opener, with a quote from the contractor.</p></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="sec-head">
+      <p class="label">The process</p>
+      <h2>How the referral works</h2>
+    </div>
+    <ol class="steps">
+      <li><div><strong>You send a request</strong><p>Use the form below or call. Give your neighborhood, the problem, and whether it is urgent.</p></div></li>
+      <li><div><strong>We pass it to a contractor</strong><p>We forward your details to an independent contractor who serves your part of Boston.</p></div></li>
+      <li><div><strong>The contractor contacts you</strong><p>They confirm the problem, give you a price and set a time. Response times depend on the contractor.</p></div></li>
+      <li><div><strong>You decide</strong><p>Any work, price and warranty is an agreement between you and the contractor. You are free to say no.</p></div></li>
+    </ol>
+  </section>
+
+  <section id="safety">
+    <div class="warn">
+      <p class="label">Safety first</p>
+      <h2>Do not fix springs or cables yourself</h2>
+      <p>Garage door springs and lift cables hold a lot of stored tension. A release can cause serious injury. Until a contractor arrives:</p>
+      <ul>
+        <li>Do not stand under or walk through a door that is partly open.</li>
+        <li>Do not try to force the door up or down.</li>
+        <li>Keep children and pets away from the door.</li>
+        <li>Pull the red emergency release only if the door is fully closed or fully open.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="areas">
+    <div class="sec-head">
+      <p class="label">Service area</p>
+      <h2>Boston neighborhoods and nearby towns</h2>
+      <p>Cold snaps and heavy snow are hard on springs and openers, so winter is a busy season. Availability varies by contractor and by area.</p>
+    </div>
+    <div class="areas-block">
+      <ul class="areas">
+        <li>Back Bay</li><li>Beacon Hill</li><li>South End</li><li>South Boston</li><li>Dorchester</li><li>Roxbury</li><li>Jamaica Plain</li><li>Roslindale</li><li>West Roxbury</li><li>Hyde Park</li><li>Mattapan</li><li>Brighton</li><li>Allston</li><li>Charlestown</li><li>East Boston</li><li>North End</li>
+      </ul>
+      <ul class="areas near">
+        <li>Cambridge</li><li>Somerville</li><li>Brookline</li><li>Newton</li><li>Quincy</li><li>Medford</li><li>Malden</li><li>Watertown</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="sec-head">
+      <p class="label">Questions</p>
+      <h2>Before you request</h2>
+    </div>
+    <details>
+      <summary>Do you repair garage doors?</summary>
+      <p>No. We are a referral service only. We connect you with an independent local contractor, and the contractor performs and is responsible for the work.</p>
+    </details>
+    <details>
+      <summary>Does it cost anything to use this service?</summary>
+      <p>Sending a request does not cost you anything. The contractor sets the price for repairs and quotes you directly. We may receive a referral fee from the contractor.</p>
+    </details>
+    <details>
+      <summary>Who sets the price and the warranty?</summary>
+      <p>The contractor does. Ask for a written quote and the warranty terms on parts and labor before you agree to any work.</p>
+    </details>
+    <details>
+      <summary>What should I ask the contractor?</summary>
+      <p>Ask for proof of insurance, their Massachusetts registration or license where it applies, the total price including parts, and when they can arrive.</p>
+    </details>
+    <details>
+      <summary>Is there a guaranteed arrival time?</summary>
+      <p>No. Timing depends on the contractor's schedule and your location. Mark your request as urgent if the door is stuck open or will not close.</p>
+    </details>
+  </section>
+
+  <section id="request">
+    <div class="sec-head">
+      <p class="label">Request a contractor</p>
+      <h2>Tell us what is wrong</h2>
+      <p>We use these details only to pass your request to a contractor.</p>
+    </div>
+    <form class="form-card" id="req" novalidate>
+      <div class="row">
+        <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" required></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="area">Neighborhood or ZIP code</label><input id="area" name="area" placeholder="Example: Dorchester, 02124" required></div>
+        <div class="field">
+          <label for="issue">Problem</label>
+          <select id="issue" name="issue" required>
+            <option value="">Choose one</option>
+            <option>Broken spring</option>
+            <option>Snapped or frayed cable</option>
+            <option>Door off track</option>
+            <option>Opener not working</option>
+            <option>Sensors or auto-reverse</option>
+            <option>Noisy or shaking door</option>
+            <option>Damaged panels</option>
+            <option>New door or opener</option>
+            <option>Something else</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label for="details">Details (optional)</label><textarea id="details" name="details" placeholder="Door type, what happened, whether the car is stuck inside"></textarea></div>
+      <label class="check" for="urgent"><input type="checkbox" id="urgent" name="urgent"><span>This is urgent (door stuck open, stuck closed with a car inside, or a security risk)</span></label>
+      <label class="check" for="consent"><input type="checkbox" id="consent" name="consent" required><span>I understand this is a referral service. The contractor, not this site, performs the work and sets the price. I agree to be contacted about my request.</span></label>
+      <p class="err" id="err" role="alert"></p>
+      <button class="btn primary" type="submit" style="justify-self:start">Request a contractor</button>
+    </form>
+    <div class="result" id="result" hidden>
+      <h3>Your request details</h3>
+      <p>Send these to us by calling or texting <span class="phone">(617) 555-0100</span> and we will pass them to a contractor.</p>
+      <pre id="summary"></pre>
+      <div><button class="btn" id="copy" type="button">Copy details</button> <span class="label" id="copied" aria-live="polite"></span></div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Harbor Door Referral</strong> is a lead referral service for garage door repair in the Boston, Massachusetts area. We are not a garage door contractor and we do not perform repairs, installations or inspections. Contractors are independent businesses. We do not guarantee their work, pricing, availability or response time.</p>
+    <p class="phone">(617) 555-0100</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var form = document.getElementById('req');
+  var err = document.getElementById('err');
+  var result = document.getElementById('result');
+  var summary = document.getElementById('summary');
+  var copied = document.getElementById('copied');
+  var text = '';
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    err.textContent = '';
+    var v = function (id) { return document.getElementById(id).value.trim(); };
+    if (!v('name')) { err.textContent = 'Enter your name.'; document.getElementById('name').focus(); return; }
+    if (v('phone').replace(/\D/g, '').length < 10) { err.textContent = 'Enter a phone number with area code.'; document.getElementById('phone').focus(); return; }
+    if (!v('area')) { err.textContent = 'Enter your neighborhood or ZIP code.'; document.getElementById('area').focus(); return; }
+    if (!v('issue')) { err.textContent = 'Choose the problem.'; document.getElementById('issue').focus(); return; }
+    if (!document.getElementById('consent').checked) { err.textContent = 'Check the box to confirm you understand this is a referral service.'; document.getElementById('consent').focus(); return; }
+
+    // TODO before launch: send these fields to your form handler or email service. The artifact viewer has no place to post to.
+    text = [
+      'Name: ' + v('name'),
+      'Phone: ' + v('phone'),
+      'Location: ' + v('area'),
+      'Problem: ' + v('issue'),
+      'Urgent: ' + (document.getElementById('urgent').checked ? 'Yes' : 'No'),
+      'Details: ' + (v('details') || 'None')
+    ].join('\n');
+    summary.textContent = text;
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  document.getElementById('copy').addEventListener('click', function () {
+    var done = function () { copied.textContent = 'Copied'; };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(summary);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      copied.textContent = 'Selected, press copy';
+    };
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch (x) { fallback(); }
+  });
+})();
+</script>
+
+</body></html>
